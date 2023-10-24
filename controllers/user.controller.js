@@ -61,7 +61,6 @@ module.exports.userController = {
     try {
       const { name, subName, phone, email, login, address, zipCode } = req.body;
       const userId = req.user.id;
-      console.log(login);
       const user = await User.findByIdAndUpdate(userId, {
         name: name,
         subName: subName,
