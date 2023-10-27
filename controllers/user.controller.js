@@ -18,6 +18,9 @@ module.exports.userController = {
         password: hash,
         role: "user",
       });
+      await Cart.create({
+        userId: user._id,
+      });
       res.json(user);
     } catch (error) {
       res.json(`registration error: ${error}`);
