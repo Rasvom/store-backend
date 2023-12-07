@@ -1,6 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
+const cookieParser = require("cookie-parser")
 const mongoose = require("mongoose");
 const { createServer } = require("http");
 const { Server } = require("socket.io");
@@ -11,6 +12,7 @@ const io = new Server(httpServer, { cors: "http://localhost:5173" });
 
 app.use(cors());
 app.use(express.json());
+app.use(cookieParser())
 app.use(express.urlencoded({ extended: true }));
 app.use(require("./routes/user.route"));
 
