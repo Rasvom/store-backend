@@ -2,14 +2,8 @@ const User = require("../models/User.model");
 
 module.exports = async (req, res, next) => {
   try {
-    const { login, email } = req.body;
-    const isLoginFree = await User.findOne({ login });
+    const { email } = req.body;
     const isEmailFree = await User.findOne({ email });
-    if (isLoginFree) {
-      return res
-        .status(401)
-        .json({ error: "Пользователь с таким логином уже существует" });
-    }
     if (isEmailFree) {
       return res
         .status(401)
